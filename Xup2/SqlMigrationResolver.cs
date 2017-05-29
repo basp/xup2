@@ -18,6 +18,7 @@ namespace Xup2
             IEnumerable<string> locations)
         {
             this.scanner = scanner;
+            this.locations = locations;
         }
 
         public IEnumerable<IResolvedMigration> ResolveMigrations()
@@ -40,7 +41,7 @@ namespace Xup2
 
                 // TODO: Skip callbacks
 
-                var migration = new ResolvedMigration();
+                // var migration = new ResolvedMigration();
             }
         }
     }

@@ -10,16 +10,18 @@ namespace Xup2
         public IEnumerable<IResource> ScanForResources(
             string path,
             string prefix,
-            string suffix)
-        {
-            var files = Directory.EnumerateFiles(
-                path,
-                $"{prefix}*{suffix}",
-                SearchOption.AllDirectories);
+            string suffix) =>
+                EnumerateFiles(path, prefix, suffix)
+                    .Select(x => new FileSystemResource(x))
+                    .OrderBy(x => Path.GetFileName(x.Path));
 
-            return files
-                .Select(x => new FileSystemResource(x))
-                .OrderBy(x => Path.GetFileName(x.Path));
-        }
+        private IEnumerable<string> EnumerateFiles(
+            string path,
+            string prefix,
+            string suffix) =>
+            Directory.EnumerateFiles(
+                path,
+                searchPattern: $"{prefix}*{suffix}",
+                searchOption: SearchOption.AllDirectories);
     }
 }
