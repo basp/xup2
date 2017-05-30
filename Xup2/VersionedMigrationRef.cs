@@ -4,13 +4,9 @@ namespace Xup2
 {
     public class VersionedMigrationRef : IMigrationRef
     {
-        public VersionedMigrationRef()
+        public VersionedMigrationRef(MigrationVersion version, string description)
         {
-            
-        }
-
-        public VersionedMigrationRef(string version, string description)
-        {
+            this.Version = version;
             this.Description = description;
         }
 
@@ -25,5 +21,8 @@ namespace Xup2
         {
             get;
         }
+
+        public override string ToString() => 
+            $"{Description} ({Version})";
     }
 }

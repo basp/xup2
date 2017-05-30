@@ -4,10 +4,17 @@ namespace Xup2
 {
     public class RepeatableMigrationRef : IMigrationRef
     {
-        public bool Repeatable => throw new NotImplementedException();
+        public RepeatableMigrationRef(string description)
+        {
+            this.Description = description;
+        }
 
-        public MigrationVersion Version => throw new NotImplementedException();
+        public bool Repeatable => true;
 
-        public string Description => throw new NotImplementedException();
+        public MigrationVersion Version => null;
+
+        public string Description { get; }
+
+        public override string ToString() => this.Description;
     }
 }
