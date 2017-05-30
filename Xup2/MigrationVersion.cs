@@ -4,14 +4,36 @@ namespace Xup2
 {
     public class MigrationVersion : IComparable<MigrationVersion>
     {
-        public static MigrationVersion FromVersion(string version)
+        public MigrationVersion(params int[] parts)
+            : this(JoinParts(parts), parts)
         {
-            throw new NotImplementedException();
         }
 
-        public int CompareTo(MigrationVersion other)
+        public MigrationVersion(string displayName, params int[] parts)
         {
-            throw new NotImplementedException();
+            this.DisplayName = displayName;
+            this.Parts = parts;
         }
+
+        public string DisplayName
+        {
+            get;
+        }
+
+        public int[] Parts
+        {
+            get;
+        }
+
+        public int CompareTo(MigrationVersion other) =>
+            throw new NotImplementedException();
+
+        public override string ToString() =>
+            string.IsNullOrWhiteSpace(this.DisplayName)
+                ? JoinParts(this.Parts)
+                : $"{DisplayName} ({JoinParts(this.Parts)})";
+
+        private static string JoinParts(params int[] parts) =>
+            string.Join(".", parts);
     }
 }

@@ -1,11 +1,13 @@
 namespace Xup2
 {
-    using System;
-    using System.Collections.Generic;   
-    using System.Linq;
-    using System.IO;
+    using System.Text.RegularExpressions;
 
     public static class Extensions
     {
+        public static string CollapseWhitespace(this string s) => 
+            Regex.Replace(s, @"\s+", " ");
+            
+        public static string HumanizeDescription(this string s) => 
+            s.Replace('_', ' ').CollapseWhitespace().Trim();
     }
 }

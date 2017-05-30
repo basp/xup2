@@ -1,6 +1,7 @@
 ﻿namespace Xup2.Cli
 {
     using System;
+    using System.IO;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -15,12 +16,15 @@
 
         public void Run()
         {
-            var path = @"D:\temp\xup";
+            var path = @"D:\tmp\xup";
             var scanner = new FileSystemScanner();
             var resources = scanner.ScanForResources(path, "V", ".sql");
             foreach(var r in resources)
             {
-                Console.WriteLine(r.Path);
+                var fileName = Path.GetFileName(r.Path);
+                // var (parts, description) = fileName.ParseVersionAndDescription();
+                // var migrationVersion = new MigrationVersion(description, parts);
+                // Console.WriteLine(migrationVersion);
             }
         }
 
