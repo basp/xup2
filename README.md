@@ -9,7 +9,7 @@ Migrations for .NET Core 2.0
 It tries to avoid re-inventing the wheel while staying as lean as possible. It focusses on **SQL Server** for now although it shouldn't be hard to implement any addititional `System.Data` compliant drivers in the future.
 
 # config
-* sqlMigrationPrefix (default `V`)
-* repeatableSqlMigrationPrefix (default `R`)
-* sqlMigrationSeparator (default `__`)
-* sqlMigrationSuffix (default `.sql`)
+* **sqlMigrationPrefix** (default `V`)
+* **repeatableSqlMigrationPrefix** (default `R`)
+* **sqlMigrationSeparator** (default `__`)
+* **sqlMigrationSuffix** (default `.sql`)
